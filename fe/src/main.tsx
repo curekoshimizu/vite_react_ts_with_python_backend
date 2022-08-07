@@ -2,9 +2,11 @@ import { indigo } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { registerSW } from 'virtual:pwa-register';
 
 import App from './apps/App';
+import store from './store';
 
 const theme = createTheme({
   palette: {
@@ -19,9 +21,11 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
 );
 
