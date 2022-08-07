@@ -43,6 +43,30 @@ const BoxExample = () => (
       {' '}
       !
     </Typography>
+    <Box m={5} />
+    <Typography variant="h4">Centering</Typography>
+    <Box
+      display="flex"
+      width={500}
+      height={200}
+      bgcolor="lightblue"
+    >
+      <Box m="auto">
+        <Box>1. Box</Box>
+        <Box>use m=&quot;auto&quot; with Box</Box>
+      </Box>
+    </Box>
+    <Box
+      display="flex"
+      width={500}
+      height={200}
+      bgcolor="lightgreen"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <div>2. Box</div>
+      <div>use alignItems and justifyContent with Box</div>
+    </Box>
   </>
 );
 

@@ -4,7 +4,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { Link, useLocation } from 'react-router-dom';
 
-import BoldBox from './BoldBox';
+import { BoldDiv } from './BoldBox';
 
 interface LinkedButtonProp {
   title: string;
@@ -16,22 +16,13 @@ const LinkedButton = ({ title, selected, path }: LinkedButtonProp) => {
   const color = selected ? '#FFA000' : 'white';
 
   return (
-    <>
-      <Button>
-        <Link to={path} style={{ color, textDecoration: 'none' }}>
-          <BoldBox bold={false}>
-            {title}
-          </BoldBox>
-        </Link>
-      </Button>
-      <Button>
-        <BoldBox bold>
-          <Link to={path} style={{ color, textDecoration: 'none' }}>
-            {title}
-          </Link>
-        </BoldBox>
-      </Button>
-    </>
+    <Button>
+      <Link to={path} style={{ color, textDecoration: 'none' }}>
+        <BoldDiv bold>
+          {title}
+        </BoldDiv>
+      </Link>
+    </Button>
   );
 };
 
