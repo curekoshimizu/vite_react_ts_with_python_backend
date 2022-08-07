@@ -24,3 +24,7 @@ npm i
 ```
 
 2. remove `assets` and `public` directories and `*.css` files.
+
+3. configure `vite.config.ts`.
+
+edit `/vite.config.ts`.
