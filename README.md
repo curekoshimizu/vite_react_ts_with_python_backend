@@ -6,7 +6,7 @@
 * Backend : Python
  * Flask
 
-## How did I do?
+## What did I do for FE?
 
 1. make fe directory.
 
@@ -24,10 +24,10 @@ npm i
 ```
 
 2. remove `assets` and `public` directories and `*.css` files.
-
 3. configure `vite.config.ts`.
 
 edit `/vite.config.ts`.
+add `PWA` plugin etc.
 
 4. introduce `eslint`
 
@@ -38,9 +38,12 @@ npm init @eslint/config
 npm install eslint-config-airbnb-typescript --save-dev
 ```
 
+5. add mui
+
 
 ## Reference.
 
 * Introduce Vite :  https://zenn.dev/sprout2000/articles/98145cf2a807b1
 * Introduce Eslint : https://zenn.dev/longbridge/articles/ae3aa36cf17d73
+* MUI : https://mui.com/
 
