@@ -6,7 +6,7 @@ import BoxExample from '../pages/BoxExample';
 import ReduxExampleApp from '../pages/ReduxExample';
 
 const links = [
-  { label: 'redux example', path: '/redux_example' },
+  { label: 'redux example', path: '/' },
   { label: 'box example', path: '/box_example' },
 ];
 
@@ -17,7 +17,6 @@ const App = () => (
       <StyledAppBar links={links} />
       <Routes>
         <Route path="/" element={<ReduxExampleApp />} />
-        <Route path="/redux_example" element={<ReduxExampleApp />} />
         <Route path="/box_example" element={<BoxExample />} />
       </Routes>
     </Container>
