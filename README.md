@@ -28,3 +28,19 @@ npm i
 3. configure `vite.config.ts`.
 
 edit `/vite.config.ts`.
+
+4. introduce `eslint`
+
+```
+npm i eslint --save-dev
+npm init @eslint/config
+ ...
+npm install eslint-config-airbnb-typescript --save-dev
+```
+
+
+## Reference.
+
+* Introduce Vite :  https://zenn.dev/sprout2000/articles/98145cf2a807b1
+* Introduce Eslint : https://zenn.dev/longbridge/articles/ae3aa36cf17d73
+
