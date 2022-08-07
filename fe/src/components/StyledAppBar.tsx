@@ -1,7 +1,10 @@
 import {
-  AppBar, Box, Toolbar, Button,
+  AppBar, Toolbar, Button,
 } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { Link, useLocation } from 'react-router-dom';
+
+import BoldBox from './BoldBox';
 
 interface LinkedButtonProp {
   title: string;
@@ -10,17 +13,25 @@ interface LinkedButtonProp {
 }
 
 const LinkedButton = ({ title, selected, path }: LinkedButtonProp) => {
-  const fontWeight = selected ? 'fontWieghtBold' : 'normal';
   const color = selected ? '#FFA000' : 'white';
 
   return (
-    <Button>
-      <Box fontWeight={fontWeight}>
+    <>
+      <Button>
         <Link to={path} style={{ color, textDecoration: 'none' }}>
-          {title}
+          <BoldBox bold={false}>
+            {title}
+          </BoldBox>
         </Link>
-      </Box>
-    </Button>
+      </Button>
+      <Button>
+        <BoldBox bold>
+          <Link to={path} style={{ color, textDecoration: 'none' }}>
+            {title}
+          </Link>
+        </BoldBox>
+      </Button>
+    </>
   );
 };
 
@@ -33,11 +44,14 @@ interface StyledAppBarProp {
   links: ILink[];
 }
 
+const StyledAppBarBase = styled(AppBar)({
+  marginBottom: 20,
+});
 const StyledAppBar = ({ links } : StyledAppBarProp) => {
   const currentLocation = useLocation();
 
   return (
-    <AppBar position="static">
+    <StyledAppBarBase position="static">
       <Toolbar>
         {links.map((link) => (
           <LinkedButton
@@ -48,7 +62,7 @@ const StyledAppBar = ({ links } : StyledAppBarProp) => {
           />
         ))}
       </Toolbar>
-    </AppBar>
+    </StyledAppBarBase>
   );
 };
 

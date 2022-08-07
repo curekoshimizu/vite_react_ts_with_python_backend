@@ -1,10 +1,11 @@
 import {
-  CssBaseline, Box, Container, Button,
+  CssBaseline, Box, Container, Button, Typography,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { BoldSpan, BoldDiv } from '../components/BoldBox';
 import StyledAppBar from '../components/StyledAppBar';
 
 const CustomButton = styled(Button)({
@@ -25,15 +26,29 @@ const ExampleApp = () => {
     </Box>
   );
 };
-const ExampleApp2 = () => (
-  <Box>
-    Hello
-  </Box>
+const BoxExample = () => (
+  <>
+    <Typography variant="h4">BOLD</Typography>
+    <Typography variant="h6">
+      When you want to use bold span, use
+      {' '}
+      <BoldSpan>&quot;BoldSpan&quot;</BoldSpan>
+      {' '}
+      !
+    </Typography>
+    <Typography variant="h6">
+      When you want to use bold div, use
+      {' '}
+      <BoldDiv>&quot;BoldDiv&quot;</BoldDiv>
+      {' '}
+      !
+    </Typography>
+  </>
 );
 
 const links = [
   { label: 'example', path: '/' },
-  { label: 'example2', path: '/example2' },
+  { label: 'box_example', path: '/box_example' },
 ];
 
 const App = () => (
@@ -44,7 +59,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<ExampleApp />} />
         <Route path="/example" element={<ExampleApp />} />
-        <Route path="/example2" element={<ExampleApp2 />} />
+        <Route path="/box_example" element={<BoxExample />} />
       </Routes>
     </Container>
   </BrowserRouter>
