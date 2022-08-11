@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 from fastapi import APIRouter, FastAPI
 from fastapi.staticfiles import StaticFiles
@@ -17,5 +18,15 @@ async def ping() -> list[Response]:
 
 
 app = FastAPI()
-app.include_router(router, prefix="/api")
-app.mount("/", StaticFiles(directory="../fe/dist/", html=True), name="static")
+
+
+def setup_app(
+    use_docs: bool,
+    static_dir: Optional[str] = None,
+) -> None:
+    if not use_docs:
+        # disable docs routers which has been already registered in constructor
+        app.router.routes = []
+    app.include_router(router, prefix="/api")
+    if static_dir is not None:
+        app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
