@@ -7,6 +7,9 @@ import checker from "vite-plugin-checker";
 export default defineConfig({
   server: {
       open: true,
+      proxy: {
+          "^/api/.*": "http://localhost:13000",
+      },
   },
   plugins: [
       react(), 
