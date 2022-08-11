@@ -15,7 +15,9 @@ if [ ! -e "${PWD}/${OPENAPI_YAML}" ]; then
     exit 1
 fi
 
-docker run --rm -v "${PWD}:/local" \
+docker run --rm \
+    -v "${PWD}:/local" \
+    -u $(id -u):$(id -g) \
     openapitools/openapi-generator-cli generate \
     -i /local/${OPENAPI_YAML} \
     -g typescript-fetch \
