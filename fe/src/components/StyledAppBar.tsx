@@ -2,26 +2,28 @@ import {
   AppBar, Toolbar, Button,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { BoldDiv } from './BoldBox';
 
 interface LinkedButtonProp {
   title: string;
-  selected: boolean;
   path: string;
 }
 
-const LinkedButton = ({ title, selected, path }: LinkedButtonProp) => {
-  const color = selected ? '#FFA000' : 'white';
-
+const LinkedButton = ({ title, path }: LinkedButtonProp) => {
   return (
     <Button>
-      <Link to={path} style={{ color, textDecoration: 'none' }}>
+        <NavLink to={path} style={({isActive}) =>  (
+            {
+                color: isActive ? '#FFA000' : 'white',  
+                    textDecoration: 'none' ,
+            }
+        )}>
         <BoldDiv bold>
           {title}
         </BoldDiv>
-      </Link>
+      </NavLink>
     </Button>
   );
 };
@@ -39,8 +41,6 @@ const StyledAppBarBase = styled(AppBar)({
   marginBottom: 20,
 });
 const StyledAppBar = ({ links } : StyledAppBarProp) => {
-  const currentLocation = useLocation();
-
   return (
     <StyledAppBarBase position="static">
       <Toolbar>
@@ -48,7 +48,6 @@ const StyledAppBar = ({ links } : StyledAppBarProp) => {
           <LinkedButton
             key={link.label}
             title={link.label}
-            selected={link.path === currentLocation.pathname}
             path={link.path}
           />
         ))}
