@@ -4,7 +4,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { BoldDiv } from './BoldBox';
+import { BoldDiv } from './ExtendedBox';
 
 interface LinkedButtonProp {
   title: string;

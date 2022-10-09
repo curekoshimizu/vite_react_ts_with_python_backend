@@ -3,7 +3,9 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { BoldBox, BoldDiv, BoldSpan } from '../components/BoldBox';
+import {
+  CenterBox, BoldBox, BoldDiv, BoldSpan,
+} from '../components/ExtendedBox';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: 'yellow',
@@ -15,18 +17,6 @@ const Item = styled(Paper)(({ theme }) => ({
 const BoxExample = () => (
   <>
     <Typography variant="h4">Grid</Typography>
-    <BoldBox
-      sx={{
-        width: 300,
-        height: 300,
-        color: 'white',
-        backgroundColor: 'primary.dark',
-      }}
-      mb={2}
-      mt={2}
-    >
-      BoldBox
-    </BoldBox>
     <Grid container columnSpacing={10} rowSpacing={2}>
       <Grid item xs={8}>
         <Item>xs=8</Item>
@@ -43,6 +33,19 @@ const BoxExample = () => (
     </Grid>
     <Box m={5} />
     <Typography variant="h4">BOLD</Typography>
+    <BoldBox
+      m="center"
+      sx={{
+        width: 300,
+        height: 300,
+        color: 'white',
+        backgroundColor: 'primary.dark',
+      }}
+      mb={2}
+      mt={2}
+    >
+      BoldBox
+    </BoldBox>
     <Typography variant="h6">
       When you want to use bold span, use
       {' '}
@@ -59,28 +62,15 @@ const BoxExample = () => (
     </Typography>
     <Box m={5} />
     <Typography variant="h4">Centering</Typography>
-    <Box
-      display="flex"
-      width={500}
-      height={200}
-      bgcolor="lightblue"
+    <CenterBox
+      sx={{
+        color: 'white',
+        backgroundColor: 'primary.dark',
+      }}
+      p={2}
     >
-      <Box m="auto">
-        <Box>1. Box</Box>
-        <Box>use m=&quot;auto&quot; with Box</Box>
-      </Box>
-    </Box>
-    <Box
-      display="flex"
-      width={500}
-      height={200}
-      bgcolor="lightgreen"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <div>2. Box</div>
-      <div>use alignItems and justifyContent with Box</div>
-    </Box>
+      CenterBox
+    </CenterBox>
     <Box m={5} />
     <Typography variant="h4">m (margin) and p (padding)</Typography>
     <Typography variant="h6">

@@ -1,7 +1,7 @@
 import { Box, BoxProps } from '@mui/material';
 import { ReactNode } from 'react';
 
-type BoldBoxProp = {
+export type BoldBoxProp = {
   bold?: boolean,
   children?: ReactNode
 } & BoxProps;
@@ -18,6 +18,25 @@ export const BoldBox = ({
     </Box>
   );
 };
+
+export type CenterBoxProp = {
+  children?: ReactNode
+} & BoxProps;
+
+export const CenterBox = ({
+  children,
+  ...props
+}: CenterBoxProp) => (
+  <Box
+    display="flex"
+    alignItems="center"
+    justifyContent="center"
+  >
+    <Box {...props}>
+      {children}
+    </Box>
+  </Box>
+);
 
 export const BoldSpan = ({ bold = true, children } : BoldBoxProp) => (
   <BoldBox bold={bold} component="span">{children}</BoldBox>
