@@ -3,7 +3,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { BoldDiv, BoldSpan } from '../components/BoldBox';
+import { BoldBox, BoldDiv, BoldSpan } from '../components/BoldBox';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: 'yellow',
@@ -15,6 +15,18 @@ const Item = styled(Paper)(({ theme }) => ({
 const BoxExample = () => (
   <>
     <Typography variant="h4">Grid</Typography>
+    <BoldBox
+      sx={{
+        width: 300,
+        height: 300,
+        color: 'white',
+        backgroundColor: 'primary.dark',
+      }}
+      mb={2}
+      mt={2}
+    >
+      BoldBox
+    </BoldBox>
     <Grid container columnSpacing={10} rowSpacing={2}>
       <Grid item xs={8}>
         <Item>xs=8</Item>

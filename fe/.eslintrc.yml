@@ -40,3 +40,10 @@ rules:
         order: asc
         caseInsensitive: true
   react/require-default-props: off
+  no-empty-pattern: off
+  react/no-array-index-key: off
+  no-mixed-operators: off
+  react/jsx-no-useless-fragment: off
+  react/jsx-props-no-spreading: off
+  no-param-reassign: off
+  no-bitwise: off

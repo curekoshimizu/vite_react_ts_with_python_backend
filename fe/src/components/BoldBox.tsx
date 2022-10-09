@@ -1,17 +1,19 @@
 import { Box, BoxProps } from '@mui/material';
 import { ReactNode } from 'react';
 
-export interface BoldBoxProp extends BoxProps {
+type BoldBoxProp = {
   bold?: boolean,
   children?: ReactNode
-}
+} & BoxProps;
 
-const BoldBox = ({
-  bold = true, children, component,
+export const BoldBox = ({
+  bold = true,
+  children,
+  ...props
 }: BoldBoxProp) => {
   const fontWeight = bold ? 'fontWeightBold' : 'normal';
   return (
-    <Box fontWeight={fontWeight} component={component}>
+    <Box fontWeight={fontWeight} {...props}>
       {children}
     </Box>
   );
