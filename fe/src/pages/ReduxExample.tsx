@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import useAsyncEffect from 'use-async-effect';
 
-import { DefaultApi, Configuration, Response } from '../client';
+import { DefaultApi, Configuration, ResponseModel } from '../client';
 import { actions } from '../slices/counterSlices';
 import { useAppSelector, useAppDispatch } from '../store';
 
@@ -14,7 +14,7 @@ const CustomButton = styled(Button)({
 export const ReduxExampleApp = () => {
   const counter = useAppSelector((state) => state.counter);
   const [localCount, setLocalCount] = useState(0);
-  const [responseArray, setResponseArray] = useState<Response[]>([]);
+  const [responseArray, setResponseArray] = useState<ResponseModel[]>([]);
   const dispatch = useAppDispatch();
 
   useAsyncEffect(async () => {
@@ -22,7 +22,7 @@ export const ReduxExampleApp = () => {
       basePath: '',
     });
     const api = new DefaultApi(config);
-    const resp: Response[] = await api.pingApiPingGet();
+    const resp: ResponseModel[] = await api.pingApiPingGet();
     setResponseArray(resp);
   }, []);
 

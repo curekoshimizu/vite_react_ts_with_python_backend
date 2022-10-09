@@ -15,11 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
-  Response,
+  ResponseModel,
 } from '../models';
 import {
-    ResponseFromJSON,
-    ResponseToJSON,
+    ResponseModelFromJSON,
+    ResponseModelToJSON,
 } from '../models';
 
 /**
@@ -30,7 +30,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Ping
      */
-    async pingApiPingGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Response>>> {
+    async pingApiPingGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ResponseModel>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -42,13 +42,13 @@ export class DefaultApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ResponseFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ResponseModelFromJSON));
     }
 
     /**
      * Ping
      */
-    async pingApiPingGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Response>> {
+    async pingApiPingGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ResponseModel>> {
         const response = await this.pingApiPingGetRaw(initOverrides);
         return await response.value();
     }

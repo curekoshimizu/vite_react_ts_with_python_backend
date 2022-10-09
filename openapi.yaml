@@ -16,11 +16,11 @@ paths:
                 title: Response Ping Api Ping Get
                 type: array
                 items:
-                  $ref: '#/components/schemas/Response'
+                  $ref: '#/components/schemas/ResponseModel'
 components:
   schemas:
-    Response:
-      title: Response
+    ResponseModel:
+      title: ResponseModel
       required:
       - resp
       type: object
