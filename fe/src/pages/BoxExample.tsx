@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const BoxExample = () => (
+export const BoxExample = () => (
   <>
     <Typography variant="h4">Grid</Typography>
     <Grid container columnSpacing={10} rowSpacing={2}>
@@ -48,16 +48,12 @@ const BoxExample = () => (
     </BoldBox>
     <Typography variant="h6">
       When you want to use bold span, use
-      {' '}
       <BoldSpan>&quot;BoldSpan&quot;</BoldSpan>
-      {' '}
       !
     </Typography>
     <Typography variant="h6">
       When you want to use bold div, use
-      {' '}
       <BoldDiv>&quot;BoldDiv&quot;</BoldDiv>
-      {' '}
       !
     </Typography>
     <Box m={5} />

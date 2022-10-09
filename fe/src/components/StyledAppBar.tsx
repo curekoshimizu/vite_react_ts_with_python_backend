@@ -2,7 +2,7 @@ import {
   AppBar, Toolbar, Button, Box,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { BoldDiv } from './ExtendedBox';
 
@@ -11,22 +11,23 @@ interface LinkedButtonProp {
   path: string;
 }
 
-const LinkedButton = ({ title, path }: LinkedButtonProp) => {
-  return (
-    <Button>
-        <NavLink to={path} style={({isActive}) =>  (
-            {
-                color: isActive ? '#FFA000' : 'white',  
-                    textDecoration: 'none' ,
-            }
-        )}>
-        <BoldDiv bold>
-          {title}
-        </BoldDiv>
-      </NavLink>
-    </Button>
-  );
-};
+const LinkedButton = ({ title, path }: LinkedButtonProp) => (
+  <Button>
+    <NavLink
+      to={path}
+      style={({ isActive }) => (
+        {
+          color: isActive ? '#FFA000' : 'white',
+          textDecoration: 'none',
+        }
+      )}
+    >
+      <BoldDiv bold>
+        {title}
+      </BoldDiv>
+    </NavLink>
+  </Button>
+);
 
 export interface ILink {
   path: string;
@@ -45,40 +46,36 @@ const StyledAppBarBase = styled(AppBar)({
 export const StyledAppBar = ({
   linksLeft,
   linksRight,
-} : StyledAppBarProp) => {
-  const currentLocation = useLocation();
-
-  return (
-    <StyledAppBarBase position="static">
-      <Toolbar>
-        {linksLeft.map((link) => {
-          if (!link.visible) {
-            return <></>;
-          }
-          return (
-            <LinkedButton
-              key={link.label}
-              title={link.label}
-              path={link.path}
-            />
-          );
-        })}
-        <Box sx={{ flexGrow: 1 }} />
-        {linksRight.map((link) => {
-          if (!link.visible) {
-            return <></>;
-          }
-          return (
-            <LinkedButton
-              key={link.label}
-              title={link.label}
-              path={link.path}
-            />
-          );
-        })}
-      </Toolbar>
-    </StyledAppBarBase>
-  );
-};
+} : StyledAppBarProp) => (
+  <StyledAppBarBase position="static">
+    <Toolbar>
+      {linksLeft.map((link) => {
+        if (!link.visible) {
+          return <></>;
+        }
+        return (
+          <LinkedButton
+            key={link.label}
+            title={link.label}
+            path={link.path}
+          />
+        );
+      })}
+      <Box sx={{ flexGrow: 1 }} />
+      {linksRight.map((link) => {
+        if (!link.visible) {
+          return <></>;
+        }
+        return (
+          <LinkedButton
+            key={link.label}
+            title={link.label}
+            path={link.path}
+          />
+        );
+      })}
+    </Toolbar>
+  </StyledAppBarBase>
+);
 
 export default StyledAppBar;

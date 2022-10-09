@@ -11,7 +11,7 @@ const CustomButton = styled(Button)({
   backgroundColor: 'royalblue',
 });
 
-const ReduxExampleApp = () => {
+export const ReduxExampleApp = () => {
   const counter = useAppSelector((state) => state.counter);
   const [localCount, setLocalCount] = useState(0);
   const [responseArray, setResponseArray] = useState<Response[]>([]);

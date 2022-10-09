@@ -3,9 +3,9 @@ import { ReactNode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { StyledAppBar, ILink } from '../components/StyledAppBar';
-import BoxExample from '../pages/BoxExample';
-import ReduxExampleApp from '../pages/ReduxExample';
-import NotFound from "../pages/NotFound";
+import { BoxExample } from '../pages/BoxExample';
+import { NotFound } from '../pages/NotFound';
+import { ReduxExampleApp } from '../pages/ReduxExample';
 
 const defaultComponent: ReactNode = <NotFound />;
 

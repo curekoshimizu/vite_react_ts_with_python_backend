@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
-from starlette.routing import Route
 
 from fastapi import APIRouter, FastAPI
 from fastapi.staticfiles import StaticFiles
+from starlette.routing import Route
 
 router = APIRouter()
 
