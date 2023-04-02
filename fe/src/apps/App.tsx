@@ -1,25 +1,55 @@
 import { CssBaseline, Container } from '@mui/material';
+import { ReactNode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { StyledAppBar } from '../components/StyledAppBar';
+import { StyledAppBar, ILink } from '../components/StyledAppBar';
 import { BoxExample } from '../pages/BoxExample';
 import { NotFound } from '../pages/NotFound';
 import { ReduxExampleApp } from '../pages/ReduxExample';
 
-const links = [
-  { label: 'box example', path: '/' },
-  { label: 'redux example', path: '/redux_example' },
+const defaultComponent: ReactNode = <NotFound />;
+
+interface LinkWithComponent extends ILink {
+  element: ReactNode
+}
+
+const linksLeft : LinkWithComponent[] = [
+  {
+    label: 'box example',
+    path: '/',
+    visible: true,
+    element: <BoxExample />,
+  },
+  {
+    label: 'redux example',
+    path: '/redux_example',
+    visible: true,
+    element: <ReduxExampleApp />,
+  },
+];
+const linksRight: LinkWithComponent[] = [
 ];
 
 export const App = () => (
   <BrowserRouter>
     <CssBaseline />
     <Container maxWidth="lg" fixed>
-      <StyledAppBar links={links} />
+      <StyledAppBar
+        linksLeft={linksLeft}
+        linksRight={linksRight}
+      />
       <Routes>
-        <Route path="/" element={<BoxExample />} />
-        <Route path="/redux_example" element={<ReduxExampleApp />} />
-        <Route path="*" element={<NotFound />} />
+        {
+            linksLeft.map((e) => (
+              <Route key={e.path} path={e.path} element={e.element} />
+            ))
+        }
+        {
+            linksRight.map((e) => (
+              <Route key={e.path} path={e.path} element={e.element} />
+            ))
+        }
+        <Route path="*" element={defaultComponent} />
       </Routes>
     </Container>
   </BrowserRouter>

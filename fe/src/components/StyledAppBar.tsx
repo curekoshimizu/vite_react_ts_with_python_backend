@@ -1,10 +1,10 @@
 import {
-  AppBar, Toolbar, Button,
+  AppBar, Toolbar, Button, Box,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 
-import { BoldDiv } from './BoldBox';
+import { BoldDiv } from './ExtendedBox';
 
 interface LinkedButtonProp {
   title: string;
@@ -29,28 +29,51 @@ const LinkedButton = ({ title, path }: LinkedButtonProp) => (
   </Button>
 );
 
-interface ILink {
+export interface ILink {
   path: string;
   label: string;
+  visible: boolean;
 }
 
-interface StyledAppBarProp {
-  links: ILink[];
+export interface StyledAppBarProp {
+  linksLeft: ILink[];
+  linksRight: ILink[];
 }
 
 const StyledAppBarBase = styled(AppBar)({
   marginBottom: 20,
 });
-export const StyledAppBar: React.FC<StyledAppBarProp> = ({ links }) => (
+export const StyledAppBar: React.FC<StyledAppBarProp> = ({
+  linksLeft,
+  linksRight,
+}) => (
   <StyledAppBarBase position="static">
     <Toolbar>
-      {links.map((link) => (
-        <LinkedButton
-          key={link.label}
-          title={link.label}
-          path={link.path}
-        />
-      ))}
+      {linksLeft.map((link) => {
+        if (!link.visible) {
+          return <></>;
+        }
+        return (
+          <LinkedButton
+            key={link.label}
+            title={link.label}
+            path={link.path}
+          />
+        );
+      })}
+      <Box sx={{ flexGrow: 1 }} />
+      {linksRight.map((link) => {
+        if (!link.visible) {
+          return <></>;
+        }
+        return (
+          <LinkedButton
+            key={link.label}
+            title={link.label}
+            path={link.path}
+          />
+        );
+      })}
     </Toolbar>
   </StyledAppBarBase>
 );
