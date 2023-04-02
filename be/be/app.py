@@ -20,13 +20,11 @@ async def ping() -> list[ResponseModel]:
     return [ResponseModel(resp="pong")]
 
 
-app = FastAPI()
-
-
 def setup_app(
     use_docs: bool,
     static_dir: Optional[str] = None,
-) -> None:
+) -> FastAPI:
+    app = FastAPI()
     docs_list = ["/openapi.json", "/docs", "/docs/oauth2-redirect", "/redoc"]
     if not use_docs:
         routes = []
@@ -51,3 +49,5 @@ def setup_app(
             if response.status_code == 404 and index_html.exists():
                 return FileResponse(index_html)
             return response
+
+    return app
