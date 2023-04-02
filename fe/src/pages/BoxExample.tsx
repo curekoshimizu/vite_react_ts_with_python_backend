@@ -12,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const BoxExample = () => (
+export const BoxExample = () => (
   <>
     <Typography variant="h4">Grid</Typography>
     <Grid container columnSpacing={10} rowSpacing={2}>
@@ -83,5 +83,3 @@ const BoxExample = () => (
     </Box>
   </>
 );
-
-export default BoxExample;

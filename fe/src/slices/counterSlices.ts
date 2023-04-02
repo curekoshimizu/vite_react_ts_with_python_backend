@@ -10,5 +10,4 @@ const slice = createSlice({
   },
 });
 
-export const { actions } = slice;
-export default slice.reducer;
+export const { actions, reducer } = slice;

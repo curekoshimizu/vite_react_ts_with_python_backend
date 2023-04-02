@@ -1,17 +1,17 @@
 import { CssBaseline, Container } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import StyledAppBar from '../components/StyledAppBar';
-import BoxExample from '../pages/BoxExample';
-import ReduxExampleApp from '../pages/ReduxExample';
-import NotFound from "../pages/NotFound";
+import { StyledAppBar } from '../components/StyledAppBar';
+import { BoxExample } from '../pages/BoxExample';
+import { NotFound } from '../pages/NotFound';
+import { ReduxExampleApp } from '../pages/ReduxExample';
 
 const links = [
   { label: 'box example', path: '/' },
   { label: 'redux example', path: '/redux_example' },
 ];
 
-const App = () => (
+export const App = () => (
   <BrowserRouter>
     <CssBaseline />
     <Container maxWidth="lg" fixed>
@@ -24,5 +24,3 @@ const App = () => (
     </Container>
   </BrowserRouter>
 );
-
-export default App;

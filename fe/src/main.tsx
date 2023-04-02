@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { registerSW } from 'virtual:pwa-register';
 
-import App from './apps/App';
-import store from './store';
+import { App } from './apps/App';
+import { store } from './store';
 
 const theme = createTheme({
   palette: {

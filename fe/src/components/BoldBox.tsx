@@ -6,7 +6,7 @@ export interface BoldBoxProp extends BoxProps {
   children?: ReactNode
 }
 
-const BoldBox = ({
+export const BoldBox = ({
   bold = true, children, component,
 }: BoldBoxProp) => {
   const fontWeight = bold ? 'fontWeightBold' : 'normal';
@@ -24,5 +24,3 @@ export const BoldSpan = ({ bold = true, children } : BoldBoxProp) => (
 export const BoldDiv = ({ bold = true, children } : BoldBoxProp) => (
   <BoldBox bold={bold} component="div">{children}</BoldBox>
 );
-
-export default BoldBox;
